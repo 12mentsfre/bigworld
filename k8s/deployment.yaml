@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bigdream
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bigdream
+  template:
+    metadata:
+      labels:
+        app: bigdream
+    spec:
+      containers:
+      - image: okteto.dev/bigdream:latest
+        name: bigdream
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: ParameterSSENCYPT
+          value: "chacha20-ietf-poly1305"
+        - name: AUUID
+          value: "09979d33-df8d-4999-b7e9-08cfa577f003"
